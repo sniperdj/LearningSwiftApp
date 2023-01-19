@@ -1,0 +1,9 @@
+platform :ios, '11.0'
+
+project 'LearningSwift.xcodeproj'
+
+target 'LearningSwift' do
+    use_frameworks!
+    pod 'Alamofire'
+
+end
