@@ -15,6 +15,9 @@
 		7D343F782978E950003684DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D343F762978E950003684DD /* LaunchScreen.storyboard */; };
 		7D343F832978EBC9003684DD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F822978EBC9003684DD /* BaseViewController.swift */; };
 		7D343F882978EE2C003684DD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F872978EE2C003684DD /* HomeViewController.swift */; };
+		7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F8B29791417003684DD /* TabbarViewController.swift */; };
+		7D343F9429791771003684DD /* ConstColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F9329791771003684DD /* ConstColor.swift */; };
+		7D343F97297929B4003684DD /* ConstSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F96297929B4003684DD /* ConstSize.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		7D343F792978E950003684DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D343F822978EBC9003684DD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7D343F872978EE2C003684DD /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7D343F8B29791417003684DD /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		7D343F9329791771003684DD /* ConstColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstColor.swift; sourceTree = "<group>"; };
+		7D343F96297929B4003684DD /* ConstSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstSize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 		7D343F802978EA0E003684DD /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7D343F8E2979170D003684DD /* Const */,
 				7D343F812978EA28003684DD /* ViewController */,
 			);
 			path = Base;
@@ -85,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				7D343F822978EBC9003684DD /* BaseViewController.swift */,
+				7D343F8B29791417003684DD /* TabbarViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -103,6 +111,15 @@
 				7D343F872978EE2C003684DD /* HomeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7D343F8E2979170D003684DD /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				7D343F9329791771003684DD /* ConstColor.swift */,
+				7D343F96297929B4003684DD /* ConstSize.swift */,
+			);
+			path = Const;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +194,9 @@
 			files = (
 				7D343F882978EE2C003684DD /* HomeViewController.swift in Sources */,
 				7D343F702978E942003684DD /* ViewController.swift in Sources */,
+				7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */,
+				7D343F9429791771003684DD /* ConstColor.swift in Sources */,
+				7D343F97297929B4003684DD /* ConstSize.swift in Sources */,
 				7D343F832978EBC9003684DD /* BaseViewController.swift in Sources */,
 				7D343F6C2978E942003684DD /* AppDelegate.swift in Sources */,
 				7D343F6E2978E942003684DD /* SceneDelegate.swift in Sources */,
@@ -256,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -311,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -329,6 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24UF99W49D;
 				INFOPLIST_FILE = LearningSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -348,6 +369,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24UF99W49D;
 				INFOPLIST_FILE = LearningSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
