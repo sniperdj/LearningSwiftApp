@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F8B29791417003684DD /* TabbarViewController.swift */; };
 		7D343F9429791771003684DD /* ConstColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F9329791771003684DD /* ConstColor.swift */; };
 		7D343F97297929B4003684DD /* ConstSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F96297929B4003684DD /* ConstSize.swift */; };
+		7D343F9E297A4214003684DD /* ConstEncryptValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F9D297A4214003684DD /* ConstEncryptValues.swift */; };
 		EB409DD705C761249D2B3C2C /* Pods_LearningSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E2856F7CF4C9BA32AA028 /* Pods_LearningSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		7D343F8B29791417003684DD /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		7D343F9329791771003684DD /* ConstColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstColor.swift; sourceTree = "<group>"; };
 		7D343F96297929B4003684DD /* ConstSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstSize.swift; sourceTree = "<group>"; };
+		7D343F9D297A4214003684DD /* ConstEncryptValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstEncryptValues.swift; sourceTree = "<group>"; };
 		B1598CF69195987B15AB5CCE /* Pods-LearningSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.release.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.release.xcconfig"; sourceTree = "<group>"; };
 		CC398A83B02BE14F963E64F3 /* Pods-LearningSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.debug.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,7 +60,6 @@
 				CC398A83B02BE14F963E64F3 /* Pods-LearningSwift.debug.xcconfig */,
 				B1598CF69195987B15AB5CCE /* Pods-LearningSwift.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -135,6 +136,7 @@
 			children = (
 				7D343F9329791771003684DD /* ConstColor.swift */,
 				7D343F96297929B4003684DD /* ConstSize.swift */,
+				7D343F9D297A4214003684DD /* ConstEncryptValues.swift */,
 			);
 			path = Const;
 			sourceTree = "<group>";
@@ -261,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D343F9E297A4214003684DD /* ConstEncryptValues.swift in Sources */,
 				7D343F882978EE2C003684DD /* HomeViewController.swift in Sources */,
 				7D343F702978E942003684DD /* ViewController.swift in Sources */,
 				7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */,
