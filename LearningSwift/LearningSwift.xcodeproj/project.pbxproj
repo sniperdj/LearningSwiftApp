@@ -19,6 +19,8 @@
 		7D343F9429791771003684DD /* ConstColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F9329791771003684DD /* ConstColor.swift */; };
 		7D343F97297929B4003684DD /* ConstSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F96297929B4003684DD /* ConstSize.swift */; };
 		7D343F9E297A4214003684DD /* ConstEncryptValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343F9D297A4214003684DD /* ConstEncryptValues.swift */; };
+		7D343FA7297D2429003684DD /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343FA6297D2429003684DD /* BaseResponse.swift */; };
+		7D343FAE297D279E003684DD /* JokeListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D343FAD297D279E003684DD /* JokeListResponse.swift */; };
 		EB409DD705C761249D2B3C2C /* Pods_LearningSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E2856F7CF4C9BA32AA028 /* Pods_LearningSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		7D343F9329791771003684DD /* ConstColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstColor.swift; sourceTree = "<group>"; };
 		7D343F96297929B4003684DD /* ConstSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstSize.swift; sourceTree = "<group>"; };
 		7D343F9D297A4214003684DD /* ConstEncryptValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstEncryptValues.swift; sourceTree = "<group>"; };
+		7D343FA6297D2429003684DD /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		7D343FAD297D279E003684DD /* JokeListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeListResponse.swift; sourceTree = "<group>"; };
 		B1598CF69195987B15AB5CCE /* Pods-LearningSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.release.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.release.xcconfig"; sourceTree = "<group>"; };
 		CC398A83B02BE14F963E64F3 /* Pods-LearningSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.debug.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +104,7 @@
 		7D343F802978EA0E003684DD /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7D343FA5297D240B003684DD /* Model */,
 				7D343F8E2979170D003684DD /* Const */,
 				7D343F812978EA28003684DD /* ViewController */,
 			);
@@ -118,6 +123,7 @@
 		7D343F852978EE0B003684DD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				7D343FA0297D2350003684DD /* Model */,
 				7D343F862978EE1F003684DD /* ViewController */,
 			);
 			path = Home;
@@ -139,6 +145,22 @@
 				7D343F9D297A4214003684DD /* ConstEncryptValues.swift */,
 			);
 			path = Const;
+			sourceTree = "<group>";
+		};
+		7D343FA0297D2350003684DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D343FAD297D279E003684DD /* JokeListResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7D343FA5297D240B003684DD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D343FA6297D2429003684DD /* BaseResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A58BC5C744296931BD121593 /* Frameworks */ = {
@@ -264,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D343F9E297A4214003684DD /* ConstEncryptValues.swift in Sources */,
+				7D343FAE297D279E003684DD /* JokeListResponse.swift in Sources */,
 				7D343F882978EE2C003684DD /* HomeViewController.swift in Sources */,
 				7D343F702978E942003684DD /* ViewController.swift in Sources */,
 				7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */,
@@ -271,6 +294,7 @@
 				7D343F97297929B4003684DD /* ConstSize.swift in Sources */,
 				7D343F832978EBC9003684DD /* BaseViewController.swift in Sources */,
 				7D343F6C2978E942003684DD /* AppDelegate.swift in Sources */,
+				7D343FA7297D2429003684DD /* BaseResponse.swift in Sources */,
 				7D343F6E2978E942003684DD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

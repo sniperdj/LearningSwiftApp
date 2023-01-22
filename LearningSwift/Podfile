@@ -5,5 +5,5 @@ project 'LearningSwift.xcodeproj'
 target 'LearningSwift' do
     use_frameworks!
     pod 'Alamofire'
-
+    pod 'HandyJSON', '~> 5.0.2'
 end
