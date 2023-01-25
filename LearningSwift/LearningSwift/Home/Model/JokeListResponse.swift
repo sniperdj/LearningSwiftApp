@@ -9,8 +9,8 @@ import Foundation
 import HandyJSON
 
 struct JokeItem: Codable, HandyJSON {
-    let content: String
-    let updateTime: String
+    let content: String?
+    let updateTime: String?
     
     init() {
         content = ""

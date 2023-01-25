@@ -24,6 +24,9 @@ class HomeViewController: BaseViewController {
         return jokeTableView
     }()
 
+    lazy var jokeList: Array = {
+      return Array<JokeItem>()
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,15 +55,21 @@ class HomeViewController: BaseViewController {
                 if let strData = String(data: data, encoding: .utf8) {
                     print("strData: \(strData)")
                     let jokeListResponse = JSONDeserializer<JokeListResponse>.deserializeFrom(json: strData)
-                    print("jokeListResponse: \(jokeListResponse)")
+                    // print("jokeListResponse: \(jokeListResponse)")
+                    let dataResponse = jokeListResponse?.data
+                    print("dataResponse: \(dataResponse)")
+                    let jokeList = dataResponse?.list
+                    guard jokeList != nil else {
+                        return
+                    }
+                    for jokeItem in jokeList! {
+                        // TODO: weakSelf
+                        print("jokeItem: \(jokeItem.content)")
+                        self.jokeList.append(jokeItem)
+                    }
+                    // TODO: weakSelf
+                    self.jokeTableView.reloadData()
                 }
-                // if let dictData = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) {
-                //     print("dictData type: \(type(of: dictData))")
-                //     if let dict = dictData as? [String: Any] {
-                //         let isValidJSON = JSONSerialization.isValidJSONObject(dict)
-                //         print("isValidJSON: \(isValidJSON)")
-                //     }
-                // }
             }
         }
     }
@@ -69,12 +78,14 @@ class HomeViewController: BaseViewController {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return self.jokeList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeViewController.cellReuseId, for: indexPath)
-        cell.textLabel?.text = "这是一个笑话"
+        let jokeItem = self.jokeList[indexPath.row]
+        cell.textLabel?.text = jokeItem.content
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.textColor = ConstColor.mainColor
         cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
         cell.textLabel?.textAlignment = NSTextAlignment.center
@@ -82,7 +93,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPaht: IndexPath) -> CGFloat {
+        return 140
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+
+        return UITableView.automaticDimension
     }
 }
