@@ -8,6 +8,9 @@
 import Foundation
 
 struct ConstEncryptValues {
-    static let jokeAppId = "secret"
-    static let jokeAppSecret = "secret"
+    static let jokeAppId = "a"
+    static let jokeAppSecret = "b"
+    static let weatherKey = "c"
+    static let everydayWordAppId = "d"
+    static let everydayWordAppSecret = "e"
 }

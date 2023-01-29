@@ -12,9 +12,12 @@ import HandyJSON
 class HomeViewController: BaseViewController {
 
     static let cellReuseId = "jokeCell"
+
+    static let everyDayViewHeight: CGFloat = 140.0
     
     lazy var jokeTableView: UITableView = {
-        let jokeTableView = UITableView(frame: CGRect(x: 0, y: 0, width: ConstSize.screenWidth, height: ConstSize.screenHeight), style: UITableView.Style.plain)
+        let naviHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0.0
+        let jokeTableView = UITableView(frame: CGRect(x: 0, y: naviHeight + HomeViewController.everyDayViewHeight, width: ConstSize.screenWidth, height: ConstSize.screenHeight), style: UITableView.Style.plain)
         jokeTableView.delegate = self
         jokeTableView.dataSource = self
         jokeTableView.register(UITableViewCell.self, forCellReuseIdentifier: HomeViewController.cellReuseId)
@@ -28,18 +31,47 @@ class HomeViewController: BaseViewController {
       return Array<JokeItem>()
     }()
 
+    lazy var everydayOneList: Array = {
+      return Array<EverydayOne>()
+    }()
+
+    lazy var everydayOneCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        let naviHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0.0
+        let everydayOneCollectionView = UICollectionView(frame: CGRect(x: 0, y: naviHeight, width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight), collectionViewLayout: layout)
+        everydayOneCollectionView.delegate = self
+        everydayOneCollectionView.dataSource = self
+        everydayOneCollectionView.register(EveryDayOneCollectionCell.self, forCellWithReuseIdentifier: EveryDayOneCollectionCell.cellReuseId)
+        everydayOneCollectionView.backgroundColor = UIColor.white
+        everydayOneCollectionView.isPagingEnabled = true
+        return everydayOneCollectionView
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        setupUI()
+
+        fetchJokeList()
+        fetchEverydayOne()
+    }
+    
+    func setupUI() {
         view.backgroundColor = UIColor.orange
         title = "首页"
+        // 头部每日一句
+        view.addSubview(everydayOneCollectionView)
+        // 底部笑话列表
         view.addSubview(jokeTableView)
-
-        // testInterface()
-        fetchJokeList()
     }
-
-    func fetchJokeList() {
+}
+// MARK: - Fetch Data
+extension HomeViewController {
+  func fetchJokeList() {
 
         let jokeListParams: [String : Any] = [
             "app_id": ConstEncryptValues.jokeAppId,
@@ -51,20 +83,18 @@ class HomeViewController: BaseViewController {
                    parameters: jokeListParams).responseJSON { response in
             debugPrint(response)
             if let data = response.data {
-//                print("data: \(data)")
                 if let strData = String(data: data, encoding: .utf8) {
-                    print("strData: \(strData)")
+//                    print("strData: \(strData)")
                     let jokeListResponse = JSONDeserializer<JokeListResponse>.deserializeFrom(json: strData)
-                    // print("jokeListResponse: \(jokeListResponse)")
                     let dataResponse = jokeListResponse?.data
-                    print("dataResponse: \(dataResponse)")
+//                    print("dataResponse: \(dataResponse)")
                     let jokeList = dataResponse?.list
                     guard jokeList != nil else {
                         return
                     }
                     for jokeItem in jokeList! {
                         // TODO: weakSelf
-                        print("jokeItem: \(jokeItem.content)")
+//                        print("jokeItem: \(jokeItem.content)")
                         self.jokeList.append(jokeItem)
                     }
                     // TODO: weakSelf
@@ -73,8 +103,53 @@ class HomeViewController: BaseViewController {
             }
         }
     }
-}
 
+    func fetchWeatherInfo() {
+        let weatherParams: [String : Any] = [
+            "key": ConstEncryptValues.weatherKey,
+            "city":"深圳"]
+
+        AF.request("https://apis.juhe.cn/simpleWeather/query",
+                   method: .post,
+                   parameters: weatherParams).responseJSON { response in
+            debugPrint(response)
+            if let data = response.data {
+                if let strData = String(data: data, encoding: .utf8) {
+//                    print("strData: \(strData)")
+//                    let weatherResponse = JSONDeserializer<WeatherResponse>.deserializeFrom(json: strData)
+//                    let weatherInfo = weatherResponse?.HeWeather6[0]
+//                    print("weatherInfo: \(weatherInfo)")
+                }
+            }
+        }
+    }
+
+    func fetchEverydayOne() {
+        let everydayWordParams: [String : Any] = [
+            "app_id": ConstEncryptValues.everydayWordAppId,
+            "app_secret": ConstEncryptValues.everydayWordAppSecret,
+            "count":4]
+
+        AF.request("https://www.mxnzp.com/api/daily_word/recommend",
+                   method: .get,
+                   parameters: everydayWordParams).responseJSON { response in
+            debugPrint(response)
+            if let data = response.data {
+                if let strData = String(data: data, encoding: .utf8) {
+                    let everydayOneResponse = JSONDeserializer<EverydayOneWordResponse>.deserializeFrom(json: strData)
+                    let dataResponse = everydayOneResponse?.data
+                    guard dataResponse != nil else {
+                        return
+                    }
+                    print("data resp : \(dataResponse)")
+                    self.everydayOneList = dataResponse!
+                    self.everydayOneCollectionView.reloadData()
+                }
+            }
+        }
+    }
+}
+// MARK: - UITableView Protocol
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -100,5 +175,28 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
         return UITableView.automaticDimension
+    }
+}
+
+// MARK: - UICollectionView Protocol
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.everydayOneList.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: EveryDayOneCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: EveryDayOneCollectionCell.cellReuseId, for: indexPath) as! EveryDayOneCollectionCell
+        cell.backgroundColor = UIColor.red
+        
+        guard indexPath.row < everydayOneList.count else {
+          return cell
+        }
+
+        cell.configCell(everydayOne: self.everydayOneList[indexPath.row])
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: ConstSize.screenWidth, height: 100)
     }
 }
