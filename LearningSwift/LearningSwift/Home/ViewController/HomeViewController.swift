@@ -16,10 +16,8 @@ class HomeViewController: BaseViewController {
     static let everyDayViewHeight: CGFloat = 140.0
     
     lazy var jokeTableView: UITableView = {
-        let naviHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0.0
-        print("joke naviHeight: \(naviHeight)")
-        
-        let jokeTableView = UITableView(frame: CGRect(x: 0, y: naviHeight + 44 + HomeViewController.everyDayViewHeight, width: ConstSize.screenWidth, height: ConstSize.screenHeight), style: UITableView.Style.plain)
+        let y: CGFloat = ConstSize.naviBarHeight + HomeViewController.everyDayViewHeight
+        let jokeTableView = UITableView(frame: CGRect(x: 0, y: y, width: ConstSize.screenWidth, height: ConstSize.screenHeight - ConstSize.tabbarHeight - y), style: UITableView.Style.plain)
         jokeTableView.delegate = self
         jokeTableView.dataSource = self
         jokeTableView.register(UITableViewCell.self, forCellReuseIdentifier: HomeViewController.cellReuseId)
@@ -43,10 +41,8 @@ class HomeViewController: BaseViewController {
         layout.itemSize = CGSize(width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        let naviHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0.0
-        print("every naviHeight: \(naviHeight)")
         
-        let everydayOneCollectionView = UICollectionView(frame: CGRect(x: 0, y: naviHeight + 44, width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight), collectionViewLayout: layout)
+        let everydayOneCollectionView = UICollectionView(frame: CGRect(x: 0, y: ConstSize.naviBarHeight, width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight), collectionViewLayout: layout)
         everydayOneCollectionView.delegate = self
         everydayOneCollectionView.dataSource = self
         everydayOneCollectionView.register(EveryDayOneCollectionCell.self, forCellWithReuseIdentifier: EveryDayOneCollectionCell.cellReuseId)
