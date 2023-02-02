@@ -19,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.backgroundColor = .white
-        let navi = UINavigationController(rootViewController: TabbarViewController())
-        window?.rootViewController = navi
+//        let navi = UINavigationController(rootViewController: )
+        window?.rootViewController = TabbarViewController()
         window?.windowScene = windowScene
         
         window?.makeKeyAndVisible()
