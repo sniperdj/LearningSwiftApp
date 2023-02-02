@@ -17,7 +17,9 @@ class HomeViewController: BaseViewController {
     
     lazy var jokeTableView: UITableView = {
         let naviHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0.0
-        let jokeTableView = UITableView(frame: CGRect(x: 0, y: naviHeight + HomeViewController.everyDayViewHeight, width: ConstSize.screenWidth, height: ConstSize.screenHeight), style: UITableView.Style.plain)
+        print("joke naviHeight: \(naviHeight)")
+        
+        let jokeTableView = UITableView(frame: CGRect(x: 0, y: naviHeight + 44 + HomeViewController.everyDayViewHeight, width: ConstSize.screenWidth, height: ConstSize.screenHeight), style: UITableView.Style.plain)
         jokeTableView.delegate = self
         jokeTableView.dataSource = self
         jokeTableView.register(UITableViewCell.self, forCellReuseIdentifier: HomeViewController.cellReuseId)
@@ -42,12 +44,16 @@ class HomeViewController: BaseViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         let naviHeight: CGFloat = navigationController?.navigationBar.frame.height ?? 0.0
-        let everydayOneCollectionView = UICollectionView(frame: CGRect(x: 0, y: naviHeight, width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight), collectionViewLayout: layout)
+        print("every naviHeight: \(naviHeight)")
+        
+        let everydayOneCollectionView = UICollectionView(frame: CGRect(x: 0, y: naviHeight + 44, width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight), collectionViewLayout: layout)
         everydayOneCollectionView.delegate = self
         everydayOneCollectionView.dataSource = self
         everydayOneCollectionView.register(EveryDayOneCollectionCell.self, forCellWithReuseIdentifier: EveryDayOneCollectionCell.cellReuseId)
         everydayOneCollectionView.backgroundColor = UIColor.white
         everydayOneCollectionView.isPagingEnabled = true
+        // everydayOneCollectionView.showsHorizontalScrollIndicator = false
+        everydayOneCollectionView.bounces = false
         return everydayOneCollectionView
     }()
 
@@ -99,26 +105,6 @@ extension HomeViewController {
                     }
                     // TODO: weakSelf
                     self.jokeTableView.reloadData()
-                }
-            }
-        }
-    }
-
-    func fetchWeatherInfo() {
-        let weatherParams: [String : Any] = [
-            "key": ConstEncryptValues.weatherKey,
-            "city":"深圳"]
-
-        AF.request("https://apis.juhe.cn/simpleWeather/query",
-                   method: .post,
-                   parameters: weatherParams).responseJSON { response in
-            debugPrint(response)
-            if let data = response.data {
-                if let strData = String(data: data, encoding: .utf8) {
-//                    print("strData: \(strData)")
-//                    let weatherResponse = JSONDeserializer<WeatherResponse>.deserializeFrom(json: strData)
-//                    let weatherInfo = weatherResponse?.HeWeather6[0]
-//                    print("weatherInfo: \(weatherInfo)")
                 }
             }
         }
@@ -191,12 +177,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard indexPath.row < everydayOneList.count else {
           return cell
         }
-
-        cell.configCell(everydayOne: self.everydayOneList[indexPath.row])
+        var everydayOne = everydayOneList[indexPath.row]
+        everydayOne.lunbo = "lunbo" + String(indexPath.row)
+        cell.configCell(everydayOne: everydayOne)
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ConstSize.screenWidth, height: 100)
+        return CGSize(width: ConstSize.screenWidth, height: HomeViewController.everyDayViewHeight)
     }
 }

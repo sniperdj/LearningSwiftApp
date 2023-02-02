@@ -15,6 +15,7 @@ class EveryDayOneCollectionCell: UICollectionViewCell {
         everydayOneLabel.font = UIFont.systemFont(ofSize: 16.0)
         everydayOneLabel.textColor = UIColor.black
         everydayOneLabel.numberOfLines = 0
+        everydayOneLabel.textAlignment = .center
         return everydayOneLabel
     }()
     
@@ -23,6 +24,12 @@ class EveryDayOneCollectionCell: UICollectionViewCell {
         everydayOneAuthorLabel.font = UIFont.systemFont(ofSize: 14.0)
         everydayOneAuthorLabel.textColor = UIColor.gray
         return everydayOneAuthorLabel
+    }()
+
+    lazy var everydayBackgroundImageView: UIImageView = {
+        let everydayBackgroundImageView = UIImageView()
+        everydayBackgroundImageView.contentMode = .scaleAspectFill
+        return everydayBackgroundImageView
     }()
     
     override init(frame: CGRect) {
@@ -36,17 +43,25 @@ class EveryDayOneCollectionCell: UICollectionViewCell {
     }
     
     func setupUI() {
+        // 背景图 
+        contentView.addSubview(everydayBackgroundImageView)
+        everydayBackgroundImageView.frame = contentView.bounds
+        // 每日一句
         contentView.addSubview(everydayOneLabel)
-        contentView.addSubview(everydayOneAuthorLabel)
-
-        everydayOneLabel.frame = CGRect(x: 10, y: 10, width: ConstSize.screenWidth - 20, height: 80)
-        everydayOneAuthorLabel.frame = CGRect(x: 10, y: 100, width: 200, height: 30)
-
+        let y = HomeViewController.everyDayViewHeight - 60
+        everydayOneLabel.frame = CGRect(x: 0, y: y, width: ConstSize.screenWidth, height: 60)
+        let backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        everydayOneLabel.backgroundColor = backgroundColor
         everydayOneLabel.text = "每日一句"
+        everydayOneLabel.textColor = UIColor.white
+
+        // 每日一句作者
+        // everydayOneAuthorLabel.frame = CGRect(x: 10, y: 100, width: 200, height: 30)
     }
     
     func configCell(everydayOne: EverydayOne) {
         everydayOneLabel.text = everydayOne.content
-        everydayOneAuthorLabel.text = everydayOne.author
+        // everydayOneAuthorLabel.text = everydayOne.author
+        everydayBackgroundImageView.image = UIImage(named: everydayOne.lunbo)
     }
 }

@@ -11,10 +11,13 @@ import HandyJSON
 struct EverydayOne: Codable, HandyJSON {
     let content: String
     let author: String
+    // 这个不是后台返回的,是我自己加的,为了更好的显示图片 
+    var lunbo: String
     
     init() {
         content = ""
         author = ""
+        lunbo = "lunbo0"
     }
 }
 
