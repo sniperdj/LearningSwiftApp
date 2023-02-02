@@ -19,7 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.backgroundColor = .white
-//        let navi = UINavigationController(rootViewController: )
         window?.rootViewController = TabbarViewController()
         window?.windowScene = windowScene
         
