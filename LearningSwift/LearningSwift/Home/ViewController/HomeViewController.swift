@@ -58,8 +58,8 @@ class HomeViewController: BaseViewController {
 
         setupUI()
 
-        fetchJokeList()
-        fetchEverydayOne()
+//        fetchJokeList()
+//        fetchEverydayOne()
     }
     
     func setupUI() {
@@ -69,6 +69,10 @@ class HomeViewController: BaseViewController {
         view.addSubview(everydayOneCollectionView)
         // 底部笑话列表
         view.addSubview(jokeTableView)
+        let img = UIImage(named: "qidongtuP.jpeg")
+        if img != nil {
+            LaunchImageHelper.changeAllLaunchImageToPortrait(image: img!)
+        }
     }
 }
 // MARK: - Fetch Data
