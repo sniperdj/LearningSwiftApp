@@ -58,8 +58,8 @@ class HomeViewController: BaseViewController {
 
         setupUI()
 
-//        fetchJokeList()
-//        fetchEverydayOne()
+        fetchJokeList()
+        fetchEverydayOne()
     }
     
     func setupUI() {

@@ -8,7 +8,7 @@
 import Foundation
 import HandyJSON
 
-struct JokeItem: Codable, HandyJSON {
+struct JokeItem: HandyJSON {
     let content: String?
     let updateTime: String?
     
@@ -23,7 +23,7 @@ struct JokeItem: Codable, HandyJSON {
     }
 }
 
-struct JokeListDataResponse: Codable, HandyJSON {
+struct JokeListData: HandyJSON {
     let page: Int
     let totalCount: Int
     let totalPage: Int
@@ -39,27 +39,15 @@ struct JokeListDataResponse: Codable, HandyJSON {
     }
 }
 
-//struct JokeListResponse: Codable, HandyJSON {
-//    let code: Int
-//    let msg: String
-//    let data: JokeListDataResponse
-//
-//    init() {
-//        code = 0
-//        msg = ""
-//        data = JokeListDataResponse(page: 0, totalCount: 0, totalPage: 0, limit: 0, list: [])
-//    }
-//}
-
  struct JokeListResponse: BaseResponseProtocol, HandyJSON {
      init() {
          code = 0
          msg = ""
-         data = JokeListDataResponse()
+         data = JokeListData()
      }
     
-     typealias T = JokeListDataResponse
+     typealias T = JokeListData
      let code: Int
      let msg: String
-     let data: JokeListDataResponse
+     let data: JokeListData
  }

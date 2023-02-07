@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BaseResponseProtocol {
-    associatedtype T: Codable
+    associatedtype T
     var code: Int { get }
     var msg: String { get }
     var data: T { get }
