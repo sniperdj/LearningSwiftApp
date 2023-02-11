@@ -261,19 +261,11 @@
 		7D34403529929BF3003684DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7D34404B29972B66003684DD /* NetworkData */,
 				7D3440422996A3D2003684DD /* NetworkManager.swift */,
 				7D3440452996A3E2003684DD /* NetworkRequestProtocol.swift */,
 				7D3440482996A401003684DD /* NetworkResponseProtocol.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		7D34404B29972B66003684DD /* NetworkData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NetworkData;
 			sourceTree = "<group>";
 		};
 		7D34404F29973138003684DD /* Data */ = {
