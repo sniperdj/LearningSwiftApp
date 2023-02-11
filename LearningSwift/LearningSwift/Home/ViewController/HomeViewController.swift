@@ -77,60 +77,53 @@ class HomeViewController: BaseViewController {
 }
 // MARK: - Fetch Data
 extension HomeViewController {
-  func fetchJokeList() {
-
-        let jokeListParams: [String : Any] = [
-            "app_id": ConstEncryptValues.jokeAppId,
-            "app_secret": ConstEncryptValues.jokeAppSecret,
-            "page":0]
-
-        AF.request("https://www.mxnzp.com/api/jokes/list",
-                   method: .get,
-                   parameters: jokeListParams).responseJSON { response in
-            debugPrint(response)
-            if let data = response.data {
-                if let strData = String(data: data, encoding: .utf8) {
-//                    print("strData: \(strData)")
-                    let jokeListResponse = JSONDeserializer<JokeListResponse>.deserializeFrom(json: strData)
-                    let dataResponse = jokeListResponse?.data
-//                    print("dataResponse: \(dataResponse)")
-                    let jokeList = dataResponse?.list
-                    guard jokeList != nil else {
-                        return
-                    }
-                    for jokeItem in jokeList! {
-                        // TODO: weakSelf
-//                        print("jokeItem: \(jokeItem.content)")
-                        self.jokeList.append(jokeItem)
-                    }
-                    // TODO: weakSelf
-                    self.jokeTableView.reloadData()
+    func fetchJokeList() {
+        let jokeListData = JokeData(method: "GET")
+        NetworkManager.shared.sendRequest(jokeListData) { (result) in
+            switch result {
+                case .success(let data):
+                print("data: \(data)")
+                let jokeListResponse = JSONDeserializer<JokeListResponse>.deserializeFrom(json: String(data: data, encoding: .utf8))
+                let dataResponse = jokeListResponse?.data
+                let jokeList = dataResponse?.list
+                guard jokeList != nil else {
+                  return
                 }
+                for jokeItem in jokeList! {
+                  self.jokeList.append(jokeItem)
+                }
+                self.jokeTableView.reloadData()
+                case .failure(let error):
+                print("error: \(error)")
             }
         }
     }
 
     func fetchEverydayOne() {
-        let everydayWordParams: [String : Any] = [
-            "app_id": ConstEncryptValues.everydayWordAppId,
-            "app_secret": ConstEncryptValues.everydayWordAppSecret,
-            "count":4]
 
-        AF.request("https://www.mxnzp.com/api/daily_word/recommend",
-                   method: .get,
-                   parameters: everydayWordParams).responseJSON { response in
-            debugPrint(response)
-            if let data = response.data {
+        let everydayOneData = EverydayData(method: "GET")
+        NetworkManager.shared.sendRequest(everydayOneData) { (result) in
+            switch result {
+            case .success(let data):
+                debugPrint("everyday data resp : \(data)")
                 if let strData = String(data: data, encoding: .utf8) {
+                    debugPrint("everyday str data resp : \(strData)")
                     let everydayOneResponse = JSONDeserializer<EverydayOneWordResponse>.deserializeFrom(json: strData)
+                    if everydayOneResponse?.code != 200 {
+                        debugPrint("everydayOneResponse code: \(String(describing: everydayOneResponse?.code))")
+                        debugPrint("everydayOneResponse msg: \(String(describing: everydayOneResponse?.msg))")
+                        return
+                    }
                     let dataResponse = everydayOneResponse?.data
                     guard dataResponse != nil else {
                         return
                     }
-                    print("data resp : \(dataResponse)")
+                    debugPrint("everyday data resp : \(String(describing: dataResponse))")
                     self.everydayOneList = dataResponse!
                     self.everydayOneCollectionView.reloadData()
                 }
+            case .failure(let error):
+                print("error: \(error)")
             }
         }
     }

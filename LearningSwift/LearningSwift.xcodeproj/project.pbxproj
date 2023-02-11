@@ -30,8 +30,11 @@
 		7D3440192990F081003684DD /* qidongtuP.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7D3440172990F081003684DD /* qidongtuP.jpeg */; };
 		7D34401C29912B34003684DD /* LaunchImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D34401B29912B34003684DD /* LaunchImageHelper.swift */; };
 		7D34401F29914EC2003684DD /* defaultLaunch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7D34401E29914EC2003684DD /* defaultLaunch.jpg */; };
-		7D34403729929C66003684DD /* NetworkDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D34403629929C66003684DD /* NetworkDataProtocol.swift */; };
-		7D34403B29929D75003684DD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D34403A29929D75003684DD /* Network.swift */; };
+		7D3440432996A3D2003684DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3440422996A3D2003684DD /* NetworkManager.swift */; };
+		7D3440462996A3E2003684DD /* NetworkRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3440452996A3E2003684DD /* NetworkRequestProtocol.swift */; };
+		7D3440492996A401003684DD /* NetworkResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3440482996A401003684DD /* NetworkResponseProtocol.swift */; };
+		7D34405429973F98003684DD /* JokeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D34405329973F98003684DD /* JokeData.swift */; };
+		7D34405829973FFE003684DD /* EverydayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D34405729973FFE003684DD /* EverydayData.swift */; };
 		EB409DD705C761249D2B3C2C /* Pods_LearningSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606E2856F7CF4C9BA32AA028 /* Pods_LearningSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,8 +65,11 @@
 		7D3440172990F081003684DD /* qidongtuP.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = qidongtuP.jpeg; sourceTree = "<group>"; };
 		7D34401B29912B34003684DD /* LaunchImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchImageHelper.swift; sourceTree = "<group>"; };
 		7D34401E29914EC2003684DD /* defaultLaunch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultLaunch.jpg; sourceTree = "<group>"; };
-		7D34403629929C66003684DD /* NetworkDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataProtocol.swift; sourceTree = "<group>"; };
-		7D34403A29929D75003684DD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		7D3440422996A3D2003684DD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		7D3440452996A3E2003684DD /* NetworkRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestProtocol.swift; sourceTree = "<group>"; };
+		7D3440482996A401003684DD /* NetworkResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseProtocol.swift; sourceTree = "<group>"; };
+		7D34405329973F98003684DD /* JokeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeData.swift; sourceTree = "<group>"; };
+		7D34405729973FFE003684DD /* EverydayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayData.swift; sourceTree = "<group>"; };
 		B1598CF69195987B15AB5CCE /* Pods-LearningSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.release.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.release.xcconfig"; sourceTree = "<group>"; };
 		CC398A83B02BE14F963E64F3 /* Pods-LearningSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearningSwift.debug.xcconfig"; path = "Target Support Files/Pods-LearningSwift/Pods-LearningSwift.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +156,7 @@
 		7D343F852978EE0B003684DD /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				7D34404F29973138003684DD /* Data */,
 				7D343FB929851A90003684DD /* View */,
 				7D343FA0297D2350003684DD /* Model */,
 				7D343F862978EE1F003684DD /* ViewController */,
@@ -254,10 +261,28 @@
 		7D34403529929BF3003684DD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7D34403629929C66003684DD /* NetworkDataProtocol.swift */,
-				7D34403A29929D75003684DD /* Network.swift */,
+				7D34404B29972B66003684DD /* NetworkData */,
+				7D3440422996A3D2003684DD /* NetworkManager.swift */,
+				7D3440452996A3E2003684DD /* NetworkRequestProtocol.swift */,
+				7D3440482996A401003684DD /* NetworkResponseProtocol.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		7D34404B29972B66003684DD /* NetworkData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkData;
+			sourceTree = "<group>";
+		};
+		7D34404F29973138003684DD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7D34405329973F98003684DD /* JokeData.swift */,
+				7D34405729973FFE003684DD /* EverydayData.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		A58BC5C744296931BD121593 /* Frameworks */ = {
@@ -385,24 +410,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D3440432996A3D2003684DD /* NetworkManager.swift in Sources */,
 				7D343F9E297A4214003684DD /* ConstEncryptValues.swift in Sources */,
 				7D343FAE297D279E003684DD /* JokeListResponse.swift in Sources */,
 				7D343F882978EE2C003684DD /* HomeViewController.swift in Sources */,
 				7D343F702978E942003684DD /* ViewController.swift in Sources */,
+				7D34405829973FFE003684DD /* EverydayData.swift in Sources */,
+				7D34405429973F98003684DD /* JokeData.swift in Sources */,
 				7D343F8C29791417003684DD /* TabbarViewController.swift in Sources */,
 				7D343FB729850BF1003684DD /* EverydayOneWordResponse.swift in Sources */,
-				7D34403729929C66003684DD /* NetworkDataProtocol.swift in Sources */,
 				7D3440132990DCAF003684DD /* DynamicLaunchImage.swift in Sources */,
 				7D343F9429791771003684DD /* ConstColor.swift in Sources */,
 				7D343FBB29851AA7003684DD /* EveryDayOneCollectionCell.swift in Sources */,
 				7D343F97297929B4003684DD /* ConstSize.swift in Sources */,
+				7D3440492996A401003684DD /* NetworkResponseProtocol.swift in Sources */,
 				7D343F832978EBC9003684DD /* BaseViewController.swift in Sources */,
-				7D34403B29929D75003684DD /* Network.swift in Sources */,
 				7D343F6C2978E942003684DD /* AppDelegate.swift in Sources */,
 				7D343FA7297D2429003684DD /* BaseResponse.swift in Sources */,
 				7D34401C29912B34003684DD /* LaunchImageHelper.swift in Sources */,
 				7D343FC8298B8843003684DD /* BaseView.swift in Sources */,
 				7D343F6E2978E942003684DD /* SceneDelegate.swift in Sources */,
+				7D3440462996A3E2003684DD /* NetworkRequestProtocol.swift in Sources */,
 				7D343FB42980FFA7003684DD /* MovieViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
